@@ -1,4 +1,4 @@
-# Proyecto de Foro API
+#API REST Foro
 Este proyecto es una API para un foro en línea, donde los usuarios pueden publicar temas y respuestas en diferentes categorías de discusión.
 
 ## Tecnologías Utilizadas
