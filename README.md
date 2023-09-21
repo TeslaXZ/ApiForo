@@ -1,5 +1,5 @@
 # API REST Foro
-Este proyecto es una API para un foro en línea, donde los usuarios pueden publicar temas y respuestas en diferentes categorías de discusión.
+Este proyecto es una API REST para un foro en línea, donde los usuarios pueden publicar temas y respuestas en diferentes categorías de discusión.
 
 ## Tecnologías Utilizadas
 - **Java (versión 17): Lenguaje de programación principal utilizado en el proyecto.**
@@ -16,6 +16,16 @@ Este proyecto es una API para un foro en línea, donde los usuarios pueden publi
 - **Spring Security: Marco de autenticación y autorización para aplicaciones Java.**
 - **JWT (JSON Web Tokens): Estándar utilizado para la creación de tokens de acceso.**
 - **SpringDoc OpenAPI: Herramienta que genera documentación de la API en formato OpenAPI.**
+
+## Funcionalidades Destacadas
+
+### Sistema de Login y Registro de Usuarios
+
+El proyecto incluye un sistema de autenticación basado en JWT. Los usuarios pueden registrarse y luego iniciar sesión para acceder a las funcionalidades protegidas.
+
+### Verificación por JWT
+
+La autenticación en este proyecto se basa en JSON Web Tokens (JWT), un estándar abierto para tokens de acceso seguro. JWT se utiliza para la verificación de usuarios y la autorización en la aplicación.
 
 ## Configuración de la Base de Datos
 La aplicación está configurada para usar MySQL como base de datos. Asegúrate de tener un servidor MySQL en ejecución. Edita el archivo application.properties con la información de tu base de datos: 
