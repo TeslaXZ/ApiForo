@@ -1,13 +1,17 @@
 package alura.foro.foroAPI.topico;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -37,6 +41,9 @@ public class Topico {
 	
 	@Enumerated(EnumType.STRING)
 	private Curso curso;
+	
+	@OneToMany(mappedBy = "topico",cascade = CascadeType.ALL)
+	private List<Respuesta> respuestas = new ArrayList<>(); 
 
 	public Topico(DatosRegistroTopico datosRegistroTopico) {
 		this.titulo = datosRegistroTopico.titulo();
@@ -55,5 +62,7 @@ public class Topico {
 		
 		
 	}
+
+	
 
 }

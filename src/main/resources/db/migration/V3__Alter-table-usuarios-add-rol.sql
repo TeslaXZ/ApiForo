@@ -1,1 +1,0 @@
-alter table usuarios add rol VARCHAR(10) NOT NULL;
