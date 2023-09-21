@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"alura.foro.foroAPI"},{"l":"alura.foro.foroAPI.controller"},{"l":"alura.foro.foroAPI.errors"},{"l":"alura.foro.foroAPI.security"},{"l":"alura.foro.foroAPI.springdoc"},{"l":"alura.foro.foroAPI.topico"},{"l":"alura.foro.foroAPI.user"}];updateSearchResults();

@@ -17,6 +17,15 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+/**
+ * Clase que representa un tema de discusión en el foro.
+ * Contiene información sobre el título, mensaje, fecha de creación, estado, autor y respuestas asociadas al tema.
+ *
+ * @version 1.0
+ * @since 2023-09-21
+ * @author Brian Diaz
+ */
+
 
 @Entity(name = "Topico")
 @Table(name = "topicos")
@@ -45,6 +54,11 @@ public class Topico {
 	@OneToMany(mappedBy = "topico",cascade = CascadeType.ALL)
 	private List<Respuesta> respuestas = new ArrayList<>(); 
 
+	/**
+     * Constructor para crear un nuevo tema a partir de datos de registro.
+     *
+     * @param datosRegistroTopico Datos de registro del tema.
+     */
 	public Topico(DatosRegistroTopico datosRegistroTopico) {
 		this.titulo = datosRegistroTopico.titulo();
 		this.mensaje = datosRegistroTopico.mensaje();
@@ -54,7 +68,11 @@ public class Topico {
 		this.curso = datosRegistroTopico.curso();
 
 	}
-
+	 /**
+     * Actualiza la información del tema con los datos proporcionados.
+     *
+     * @param actualizarTopico Datos actualizados del tema.
+     */
 	public void actualizarTopico(DatosActualizarTopico actualizarTopico) {
 		this.titulo = actualizarTopico.titulo();
 		this.mensaje = actualizarTopico.mensaje();
@@ -62,7 +80,9 @@ public class Topico {
 		
 		
 	}
-
+	/**
+     * Marca el tema como solucionado.
+     */
 	public void marcarComoSolucionado() {
 		this.estatus = EstatusTopico.SOLUCIONADO;
 		

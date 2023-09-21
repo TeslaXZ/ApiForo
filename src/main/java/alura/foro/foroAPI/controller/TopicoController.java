@@ -35,6 +35,15 @@ import jakarta.validation.Valid;
 
 import org.springframework.data.domain.Pageable;
 
+/**
+ * Controlador para operaciones relacionadas con tópicos en el foro.
+ * Permite publicar, listar, obtener, actualizar y eliminar tópicos, así como responder a un tópico y marcarlo como solucionado.
+ *
+ * @author Brian Diaz
+ * @version 1.0
+ * @since 2023-09-21
+ */
+
 @RestController
 @RequestMapping("/topicos")
 @SecurityRequirement(name = "bearer-key") 
@@ -45,6 +54,14 @@ public class TopicoController {
 	private RespuestaRepository respuestaRepository;
 	@Autowired
 	private TopicoService topicoService;
+	
+	 /**
+     * Publica un nuevo tópico en el foro.
+     *
+     * @param datosRegistroTopico La información del tópico a registrar.
+     * @param uriComponentsBuilder El constructor de URI para la respuesta.
+     * @return ResponseEntity con la respuesta y la URI del tópico creado.
+     */
 
 	@PostMapping
 	public ResponseEntity<DatosRespuestaTopico> publicarTopico(
@@ -57,7 +74,13 @@ public class TopicoController {
 		return ResponseEntity.created(url).body(datosRespuestaTopico);
 
 	}
-
+	
+	  /**
+     * Obtiene una lista paginada de tópicos.
+     *
+     * @param paginacion La información de paginación.
+     * @return ResponseEntity con la lista paginada de tópicos.
+     */
 	@GetMapping
 	public ResponseEntity<Page<DatosListadoTopicos>> listarTopicos(
 			@PageableDefault(sort = "Creacion") Pageable paginacion) {
@@ -70,6 +93,13 @@ public class TopicoController {
 
 		return ResponseEntity.ok(datosListadoTopicosPage);
 	}
+	
+	/**
+     * Obtiene un tópico por su ID.
+     *
+     * @param id El ID del tópico a obtener.
+     * @return ResponseEntity con la respuesta del tópico obtenido.
+     */
 
 	@GetMapping("/{id}")
 	public ResponseEntity<DatosRespuestaTopicoPorId> obtenerTopicoPorId(@PathVariable Long id) {
@@ -82,7 +112,13 @@ public class TopicoController {
 				.ok(new DatosRespuestaTopicoPorId(topico, DatosListadoRespuestas.fromRespuestas(respuestas)));
 
 	}
-
+	
+	 /**
+     * Actualiza un tópico existente en el foro.
+     *
+     * @param datosActualizarTopico La información actualizada del tópico.
+     * @return ResponseEntity con la respuesta del tópico actualizado.
+     */
 	@PutMapping(value = "editar")
 	@Transactional
 	public ResponseEntity<DatosRespuestaTopico> actualizarTopico(
@@ -98,7 +134,12 @@ public class TopicoController {
 		return ResponseEntity.ok(datosRespuestaTopico);
 
 	}
-
+	/**
+     * Elimina un tópico del foro.
+     *
+     * @param id El ID del tópico a eliminar.
+     * @return ResponseEntity con un mensaje indicando que el tópico fue eliminado correctamente.
+     */
 	@DeleteMapping("/{id}")
 	@Transactional
 	public ResponseEntity<String> eliminarTopico(@PathVariable Long id) {
@@ -112,7 +153,12 @@ public class TopicoController {
 		return ResponseEntity.ok("Topico eliminado Correctamente");
 
 	}
-
+	  /**
+     * Marca un tópico como solucionado.
+     *
+     * @param id El ID del tópico a marcar como solucionado.
+     * @return ResponseEntity con la respuesta del tópico marcado como solucionado.
+     */
 	@PutMapping("/{id}")
 	@Transactional
 	public ResponseEntity<DatosRespuestaTopico> marcarComoSolucionado(@PathVariable Long id) {
@@ -128,7 +174,12 @@ public class TopicoController {
 		return ResponseEntity.ok(datosRespuestaTopico);
 
 	}
-
+	 /**
+     * Responde a un tópico existente en el foro.
+     *
+     * @param datosRespuesta La información de la respuesta al tópico.
+     * @return ResponseEntity con la respuesta de la acción de responder al tópico.
+     */
 	@PostMapping(value = "respuesta")
 	public ResponseEntity<DatosRespuesta> responderTopico(@RequestBody @Valid DatosRespuesta datosRespuesta) {
 

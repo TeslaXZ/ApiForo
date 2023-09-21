@@ -13,6 +13,15 @@ import alura.foro.foroAPI.user.Usuario;
 import alura.foro.foroAPI.user.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
 
+/**
+ * Servicio de autenticación para gestionar el inicio de sesión y registro de usuarios.
+ * Proporciona métodos para autenticar usuarios y generar tokens JWT.
+ *
+ * @version 1.0
+ * @since 2023-09-21
+ * @author Brian Diaz
+ */
+
 @Service
 @RequiredArgsConstructor
 public class AuthService {
@@ -21,6 +30,13 @@ public class AuthService {
 	private final JwtService jwtService;
 	private final PasswordEncoder passwordEncoder;
 	private final AuthenticationManager authenticationManager;
+	
+	  /**
+     * Realiza la autenticación de un usuario utilizando sus credenciales.
+     *
+     * @param datosLoginUsuario La información de inicio de sesión del usuario.
+     * @return DatosJWTToken con el token JWT para el usuario autenticado.
+     */
 
 	public DatosJWTToken login(DatosLoginUsuario datosLoginUsuario) {
 		authenticationManager.authenticate(
@@ -31,7 +47,12 @@ public class AuthService {
 				
 		return new DatosJWTToken(token);
 	}
-
+	/**
+     * Registra un nuevo usuario en el sistema y genera un token JWT para él.
+     *
+     * @param datosRegistroUsuario La información de registro del usuario.
+     * @return DatosJWTToken con el token JWT para el usuario registrado.
+     */
 	public DatosJWTToken registrar(DatosRegistroUsuario datosRegistroUsuario) {
 		Usuario usuario = Usuario.builder().nombre(datosRegistroUsuario.nombre()).correo(datosRegistroUsuario.correo())
 				.login(datosRegistroUsuario.login()).clave(passwordEncoder.encode(datosRegistroUsuario.clave()))

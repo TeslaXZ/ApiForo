@@ -16,6 +16,14 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
+/**
+ * Controlador para operaciones relacionadas con la autenticación y registro de usuarios.
+ * Permite iniciar sesión y registrar nuevos usuarios.
+ *
+ * @author Brian Diaz
+ * @version 1.0
+ * @since 2023-09-21
+ */
 
 @RestController
 @RequestMapping("/auth")
@@ -28,6 +36,13 @@ public class UsuarioController {
 	private final AuthService authService;
 	private final UsuarioService usuarioService;
 	
+	  /**
+     * Inicia sesión para un usuario existente.
+     *
+     * @param datosLoginUsuario La información de inicio de sesión del usuario.
+     * @return ResponseEntity con los datos del token de autenticación.
+     */
+	
 	@PostMapping(value = "login")
 	public ResponseEntity<DatosJWTToken> login(@RequestBody @Valid DatosLoginUsuario datosLoginUsuario) {
 		
@@ -35,6 +50,13 @@ public class UsuarioController {
 		
 		return ResponseEntity.ok(authService.login(datosLoginUsuario));
 	}
+	
+	   /**
+     * Registra un nuevo usuario en el sistema.
+     *
+     * @param datosRegistroUsuario La información de registro del usuario.
+     * @return ResponseEntity con los datos del token de autenticación.
+     */
 	
 	@PostMapping (value = "registro")
 	public ResponseEntity<DatosJWTToken> registrar(@RequestBody @Valid DatosRegistroUsuario datosRegistroUsuario) {

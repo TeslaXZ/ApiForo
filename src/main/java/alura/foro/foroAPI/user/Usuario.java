@@ -18,6 +18,14 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+/**
+ * Clase que representa un usuario en el sistema.
+ * Contiene información sobre el nombre, correo, nombre de usuario, contraseña, rol y permisos asociados al usuario.
+ *
+ * @version 1.0
+ * @since 2023-09-21
+ * @author Brian Diaz
+ */
 @Entity(name = "Usuario")
 @Table(name = "usuarios")
 @Getter

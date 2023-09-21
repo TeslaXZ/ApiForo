@@ -10,6 +10,15 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import lombok.RequiredArgsConstructor;
+/**
+ * Configuración de seguridad para la aplicación.
+ * Configura la seguridad de la aplicación mediante Spring Security, definiendo reglas de autorización y autenticación.
+ *
+ * @version 1.0
+ * @since 2023-09-21
+ * @author Brian Diaz
+ */
+
 
 @Configuration
 @EnableWebSecurity
@@ -18,6 +27,14 @@ public class SecurityConfigurations {
 
 	private final AuthenticationProvider authProvider;
 	private final SecurityFilter securityFilter;
+	
+	 /**
+     * Configura la cadena de filtros de seguridad para las peticiones HTTP.
+     *
+     * @param http La configuración de HttpSecurity.
+     * @return La cadena de filtros de seguridad.
+     * @throws Exception Si hay un error durante la configuración.
+     */
 
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {

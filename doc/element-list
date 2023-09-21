@@ -1,0 +1,7 @@
+alura.foro.foroAPI
+alura.foro.foroAPI.controller
+alura.foro.foroAPI.errors
+alura.foro.foroAPI.security
+alura.foro.foroAPI.springdoc
+alura.foro.foroAPI.topico
+alura.foro.foroAPI.user
