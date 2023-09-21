@@ -63,6 +63,11 @@ public class Topico {
 		
 	}
 
+	public void marcarComoSolucionado() {
+		this.estatus = EstatusTopico.SOLUCIONADO;
+		
+	}
+
 	
 
 }

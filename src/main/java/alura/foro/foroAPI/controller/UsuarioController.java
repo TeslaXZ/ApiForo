@@ -12,6 +12,7 @@ import alura.foro.foroAPI.security.DatosJWTToken;
 import alura.foro.foroAPI.user.DatosLoginUsuario;
 import alura.foro.foroAPI.user.DatosRegistroUsuario;
 import alura.foro.foroAPI.user.UsuarioService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
@@ -19,6 +20,7 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequestMapping("/auth")
 @RequiredArgsConstructor
+@SecurityRequirement(name = "bearer-key") 
 public class UsuarioController {
 	
 	

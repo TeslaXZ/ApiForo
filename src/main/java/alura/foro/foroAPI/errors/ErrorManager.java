@@ -7,7 +7,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import io.jsonwebtoken.ExpiredJwtException;
+
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.ValidationException;
 
@@ -26,11 +26,7 @@ public class ErrorManager {
 		return ResponseEntity.badRequest().body(errores);
 	}
 
-	@ExceptionHandler(ExpiredJwtException.class)
-	public ResponseEntity tratarErrorTokenExpirado(ExpiredJwtException e) {
-
-		return ResponseEntity.badRequest().body("El token ha expirado");
-	}
+	
 	
 	@ExceptionHandler(ValidationException.class)
 	public ResponseEntity errorHandlerValidacionesDeIntegridad(Exception e) {

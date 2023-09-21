@@ -30,12 +30,14 @@ import alura.foro.foroAPI.topico.RespuestaRepository;
 import alura.foro.foroAPI.topico.Topico;
 import alura.foro.foroAPI.topico.TopicoRepository;
 import alura.foro.foroAPI.topico.TopicoService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 
 import org.springframework.data.domain.Pageable;
 
 @RestController
 @RequestMapping("/topicos")
+@SecurityRequirement(name = "bearer-key") 
 public class TopicoController {
 	@Autowired
 	private TopicoRepository repository;
@@ -81,7 +83,7 @@ public class TopicoController {
 
 	}
 
-	@PutMapping
+	@PutMapping(value = "editar")
 	@Transactional
 	public ResponseEntity<DatosRespuestaTopico> actualizarTopico(
 			@RequestBody @Valid DatosActualizarTopico datosActualizarTopico) {
@@ -108,6 +110,22 @@ public class TopicoController {
 		repository.delete(topico);
 
 		return ResponseEntity.ok("Topico eliminado Correctamente");
+
+	}
+
+	@PutMapping("/{id}")
+	@Transactional
+	public ResponseEntity<DatosRespuestaTopico> marcarComoSolucionado(@PathVariable Long id) {
+		
+		topicoService.verificarExistenciadelTopico(id);
+		
+		Topico topico = repository.getReferenceById(id);
+		topico.marcarComoSolucionado();
+
+		DatosRespuestaTopico datosRespuestaTopico = new DatosRespuestaTopico(topico.getId(), topico.getTitulo(),
+				topico.getMensaje(), topico.getCreacion(), topico.getEstatus(), topico.getAutor(), topico.getCurso());
+
+		return ResponseEntity.ok(datosRespuestaTopico);
 
 	}
 
