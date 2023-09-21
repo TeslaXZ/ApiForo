@@ -1,5 +1,11 @@
 package alura.foro.foroAPI.user;
 
-public record DatosLoginUsuario(String login, String clave) {
+import jakarta.validation.constraints.NotBlank;
+
+public record DatosLoginUsuario(
+		@NotBlank
+		String login,
+		@NotBlank
+		String clave) {
 
 }
